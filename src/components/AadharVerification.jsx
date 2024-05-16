@@ -53,8 +53,11 @@ function AadharVerification() {
       textAlign: 'center',
       display: 'flex',
       flexDirection: 'column',
-      alignItems: 'center'
+      alignItems: 'center',
+      width :'50%',
+      margin: 'auto' // Center the box horizontally
     }}>
+    
       <div style={{ border: '2px solid #ccc', padding: '10px', borderRadius: '10px', marginBottom: '20px', width: '50%' }}>
         <h2 style={{ fontFamily: 'Times New Roman, Times, serif' }}>AADHAAR API</h2>
       </div>
