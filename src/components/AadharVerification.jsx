@@ -1,28 +1,37 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
+import axios from 'axios';
+
+function generateSixDigitCode() {
+  return Math.floor(100000 + Math.random() * 900000).toString();
+}
 
 function AadharVerification() {
-  const [aadharNumber, setAadharNumber] = useState('');
-  const [phoneNumber, setPhoneNumber] = useState('');
-  const [verificationCode, setVerificationCode] = useState('');
-  const [verificationStatus, setVerificationStatus] = useState('');
+  const [aadharNumber, setAadharNumber] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [verificationCode, setVerificationCode] = useState("");
+  const [verificationStatus, setVerificationStatus] = useState("");
+  const [sentCode, setSentCode] = useState("");
 
-  const sendCode = () => {
-    // Logic to send verification code to the phone number
-    // This could be an API call or any other mechanism
+  const sendCode = async () => {
+    const code = generateSixDigitCode();
+    setSentCode(code);
 
-    // For demonstration purposes, let's assume the code is sent successfully
-    setVerificationStatus('Code sent to ' + phoneNumber);
-  };
-
-  const verifyCode = () => {
-    // Logic to verify the entered code
-    if (verificationCode === '123456') {
-      setVerificationStatus('Verification successful');
-    } else {
-      setVerificationStatus('Invalid verification code');
+    try {
+      await axios.post('http://localhost:5000/send-code', { phoneNumber, code });
+      setVerificationStatus("Code sent to " + phoneNumber);
+    } catch (error) {
+      console.error("Error sending code:", error);
+      setVerificationStatus("Failed to send code");
     }
   };
 
+  const verifyCode = () => {
+    if (verificationCode === sentCode) {
+      setVerificationStatus("Verification successful");
+    } else {
+      setVerificationStatus("Invalid verification code");
+    }
+  };
   return (
  <div style={{ 
       backgroundColor:'LightGray', /* Add gradient background */
