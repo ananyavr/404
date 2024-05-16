@@ -17,7 +17,7 @@ function AadharVerification() {
     setSentCode(code);
 
     try {
-      await axios.post('http://localhost:5001/send-code', { phoneNumber, code });
+      await axios.post('http://localhost:5005/send-code', { phoneNumber, code });
       setVerificationStatus("Code sent to " + phoneNumber);
     } catch (error) {
       console.error("Error sending code:", error);
@@ -49,7 +49,18 @@ function AadharVerification() {
           <input
             type="text"
             value={aadharNumber}
-            onChange={(e) => setAadharNumber(e.target.value)}
+            onChange={(e) => {
+              // Limit Aadhaar number to 12 digits
+              const input = e.target.value.replace(/\D/g, '').slice(0, 12);
+              setAadharNumber(input);
+              if (input !== '') {
+                setAadharEntered(true);
+              } else {
+                setAadharEntered(false);
+              }
+            }}
+            pattern="[0-9]*" // Accept only integers
+
             style={{ borderRadius: '20px', padding: '10px' }} /* Make the text box curved */
           />
         </div>
