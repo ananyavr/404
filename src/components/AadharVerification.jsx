@@ -24,36 +24,51 @@ function AadharVerification() {
   };
 
   return (
-    <div>
-      <h1>AADHAR API</h1>
-      <div>
-        <label>Enter Aadhar number:</label>
-        <input
-          type="text"
-          value={aadharNumber}
-          onChange={(e) => setAadharNumber(e.target.value)}
-        />
+ <div style={{ 
+      backgroundColor:'LightGray', /* Add gradient background */
+      padding: '20px', 
+      borderRadius: '10px', 
+      color: 'black', 
+      textAlign: 'center',
+    }}>
+      <div style={{ border: '2px solid #ccc', padding: '10px', borderRadius: '10px', marginBottom: '20px' }}>
+        <h2>AADHAAR API</h2>
       </div>
-      <div>
-        <label>Enter phone number:</label>
-        <input
-          type="text"
-          value={phoneNumber}
-          onChange={(e) => setPhoneNumber(e.target.value)}
-        />
+      <div style={{ border: '2px solid #ccc', padding: '10px', borderRadius: '10px', marginBottom: '20px' }}>
+        <div style={{ marginBottom: '15px' }}>
+          <label style={{ marginRight: '10px' }}>Enter Aadhaar Number:</label>
+          <input
+            type="text"
+            value={aadharNumber}
+            onChange={(e) => setAadharNumber(e.target.value)}
+            style={{ borderRadius: '20px', padding: '10px' }} /* Make the text box curved */
+          />
+        </div>
       </div>
-      <button onClick={sendCode}>Send Code</button>
+      <div style={{ border: '1px solid #ccc', padding: '10px', borderRadius: '10px', marginBottom: '20px' }}>
+        <div style={{ marginBottom: '15px' }}>
+          <label style={{ marginRight: '10px' }}>Enter Phone Number:</label>
+          <input
+            type="text"
+            value={phoneNumber}
+            onChange={(e) => setPhoneNumber(e.target.value)}
+            style={{ borderRadius: '20px', padding: '10px' }} /* Make the text box curved */
+          />
+        </div>
+      </div>
+      <button onClick={sendCode} style={{ borderRadius: '20px', padding: '10px',marginLeft: 'auto', marginRight: 'auto', display: 'block' }}>Send Code</button>
       <div>
         {verificationStatus && <p>{verificationStatus}</p>}
         {verificationStatus && (
-          <div>
-            <label>Enter verification code:</label>
+          <div style={{ marginTop: '15px' }}>
+            <label style={{ marginRight: '10px' }}>Enter verification code:</label>
             <input
               type="text"
               value={verificationCode}
               onChange={(e) => setVerificationCode(e.target.value)}
+ style={{ borderRadius: '20px', padding: '10px' }} /* Make the text box curved */
             />
-            <button onClick={verifyCode}>Verify</button>
+            <button onClick={verifyCode} style={{ borderRadius: '20px', padding: '10px',marginLeft: '10px' }}>Verify</button>
           </div>
         )}
       </div>
