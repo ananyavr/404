@@ -17,7 +17,7 @@ function AadharVerification() {
     setSentCode(code);
 
     try {
-      await axios.post('http://localhost:5000/send-code', { phoneNumber, code });
+      await axios.post('http://localhost:5001/send-code', { phoneNumber, code });
       setVerificationStatus("Code sent to " + phoneNumber);
     } catch (error) {
       console.error("Error sending code:", error);

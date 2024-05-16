@@ -5,10 +5,10 @@ const bodyParser = require('body-parser');
 const twilio = require('twilio');
 
 const app = express();
-const port = process.env.PORT || 5050;
+const port = process.env.PORT || 5001;
 
-const accountSid = "Enter api auth here";
-const authToken = "Enter apikey here";
+const accountSid = "api";
+const authToken = "apitoken";
 const client = twilio(accountSid, authToken);
 
 app.use(cors());
