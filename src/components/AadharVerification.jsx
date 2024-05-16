@@ -24,7 +24,7 @@ function AadharVerification() {
   };
 
   return (
-    <div style={{ 
+ <div style={{ 
       backgroundColor:'LightGray', /* Add gradient background */
       padding: '20px', 
       borderRadius: '10px', 
@@ -66,7 +66,7 @@ function AadharVerification() {
               type="text"
               value={verificationCode}
               onChange={(e) => setVerificationCode(e.target.value)}
-              style={{ borderRadius: '20px', padding: '10px' }} /* Make the text box curved */
+ style={{ borderRadius: '20px', padding: '10px' }} /* Make the text box curved */
             />
             <button onClick={verifyCode} style={{ borderRadius: '20px', padding: '10px',marginLeft: '10px' }}>Verify</button>
           </div>
